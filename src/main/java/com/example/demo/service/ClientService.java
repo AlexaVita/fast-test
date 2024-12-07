@@ -40,7 +40,6 @@ public class ClientService {
         dateOfTakingRepository.save(new DateOfTaking(id, takenBook));
     }
 
-    @Transactional
     public List<ClientTakenBooks> takenBooks() {
         List<ClientTakenBooks> clientTakenBooks = new ArrayList<>();
         List<Client> clients = clientRepository.findAllByOrderByIdAsc();
