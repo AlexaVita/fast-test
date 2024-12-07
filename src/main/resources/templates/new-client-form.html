@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Добавление клиента</title>
+</head>
+<style>
+    .error {
+        color: red;
+    }
+</style>
+<body>
+<h1>Добавить нового клиента</h1>
+<form action="#" th:action="@{/clients/save}" th:object="${client}" method="post">
+    <p>
+        Имя:<br/>
+        <input type="text" th:field="*{fio}"/>
+        <p th:if="${#fields.hasErrors('fio')}" th:class="${#fields.hasErrors('fio')}? error">неверное ФИО</p>
+    <!--        <span th:if="${#fields.hasErrors('fio')}" style="color: #F00;">Ошибка в заполнении ФИО.</span>-->
+    </p>
+    <p>
+        Дата рождения (ДД.ММ.ГГГГ):<br/>
+        <input type="date" th:field="*{birthDate}"/>
+    <p th:if="${#fields.hasErrors('birthDate')}" th:class="${#fields.hasErrors('birthDate')}? error">Неверный возраст</p>
+    <!--        <span th:if="${#fields.hasErrors('birthDate')}"  style="color: #F00;">Неверный формат даты.</span>-->
+    </p>
+    <button type="submit">Сохранить</button>
+</form>
+</body>
+</html>

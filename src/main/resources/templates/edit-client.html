@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Редактирование клиента</title>
+</head>
+<style> .error {  outline: 2px solid red; } </style>
+<body>
+<h2>Редактировать клиента</h2>
+<form action="#" th:action="@{/clients/update-client}" th:object="${client}" method="post">
+  <input type="hidden" th:field="*{id}"/>
+  <table border="0" cellpadding="10">
+    <tr>
+      <td>ФИО:</td>
+      <td><input type="text" th:field="*{fio}" th:classappend="${#fields.hasErrors('fio')} ? 'error'"/></td>
+    </tr>
+    <tr>
+      <td>Дата рождения:</td>
+      <td><input type="date" th:field="*{birthDate}" th:classappend="${#fields.hasErrors('fio')} ? 'error'"/></td>
+    </tr>
+    <tr>
+      <td colspan="2"><button type="submit">Сохранить изменения</button></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

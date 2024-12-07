@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Выдача книги</title>
+</head>
+<style> .error {  outline: 2px solid red; } </style>
+<body>
+<h2>Выдать книгу</h2>
+<form action="#" th:action="@{/clients/takeBook}" method="post">
+  <input type="hidden" name="id" th:value="${client.id}"/>
+  <table border="0" cellpadding="10">
+    <tr>
+      <td>ФИО:</td>
+      <td><p type="text" th:text="${client.fio}"></p></td>
+    </tr>
+    <tr>
+      <td>Дата рождения:</td>
+      <td><p type="text" th:text="${client.birthDate}"></p></td>
+    </tr>
+    <tr>
+      <td>ISBN книги:</td>
+      <td>
+        <select name="takenBook" id="selectedOption">
+        <option value="" selected disabled hidden>Выберите вариант</option>
+        <option th:each="book : ${books}" th:value="${book.isbn}" th:text="${book.isbn}"></option>
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2"><button type="submit">Выдать книгу</button></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>
